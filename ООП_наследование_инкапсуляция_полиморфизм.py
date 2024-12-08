@@ -58,7 +58,12 @@ class Lecturer(Mentor):
     def __cmp__(self, lecturer):
         average_self = sum( v for v in self.grades.values() ) / len(self.grades)
         average_lecturer = sum( v for v in lecturer.grades.values() ) / len(lecturer.grades)        
-        return (average_self==average_lecturer)
+        if average_self < average_lecturer:
+            return -1
+        if average_self == average_lecturer:
+            return 0
+        if average_self > average_lecturer: 
+            return 1
                      
         
 class Reviewer(Mentor):
@@ -171,4 +176,26 @@ list_lecturer.append(lecturer2)
 courses = "Git" 
 print(f'Cредняя оценка за лекции всех лекторов в рамках курса: "{courses}": {average_lecturer(list_lecturer, courses)}')
 
-
+eq = student1 == student2
+if eq == 0:
+    print(f'У Студента {student1.name} средняя оценка за домашние задания такая же, как и у {student2.name}')
+if eq == -1:     
+    print(f'У Студента {student1.name} средняя оценка за домашние задания хуже, чем у {student2.name}')
+if eq == 1:     
+    print(f'У Студента {student1.name} средняя оценка за домашние задания лучше, чем у {student2.name}')
+    
+eq = student2 == student1
+if eq == 0:
+    print(f'У студента {student2.name} средняя оценка за домашние задания такая же, как и у {student1.name}')
+if eq == -1:     
+    print(f'У студента {student2.name} средняя оценка за домашние задания хуже, чем у {student1.name}')
+if eq == 1:     
+    print(f'У студента {student2.name} средняя оценка за домашние задания лучше, чем у {student1.name}') 
+    
+eq = lecturer1 == lecturer2
+if eq == 0:
+    print(f'У лектора {lecturer1.name} средняя оценка за лекции такая же, как и у {lecturer2.name}')
+if eq == -1:     
+    print(f'У лектора {lecturer1.name} средняя оценка за лекции хуже, чем у {lecturer2.name}')
+if eq == 1:     
+    print(f'У лектора {lecturer1.name} средняя оценка за лекции лучше, чем у {lecturer2.name}')        
